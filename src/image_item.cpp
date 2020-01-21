@@ -3,28 +3,36 @@
 
 ImageItem::ImageItem(QQuickItem* parent) : QQuickPaintedItem(parent)
 {
-    qDebug() << "Lienzo created.";
+    qDebug() << "ImageItem created.";
 
     content_ = QImage(":/images/assets/uv-grid-color.png");
+    resizeContainer();
     update();
-    int x = 0;
 }
 
 void ImageItem::paint(QPainter* painter)
 {
     qDebug() << "In Lienzo->paint()";
+    qDebug() << "content width: " << content_.width();
+
     painter->drawImage(QRectF{ 0.,0.,
                                static_cast<double>(content_.width()),
                                static_cast<double>(content_.height()) }
                        , content_);
 }
 
-void ImageItem::openImage(const QString path)
+void ImageItem::openImage(const QUrl path)
 {
     qDebug() << "Current dir is:" << QDir::currentPath();
     qDebug() << "Opening path: " << path;
-    content_ = QImage("./assets/PM5544_with_non-PAL_signals.png");
-    int x = content_.width();
-    qDebug() << x;
+
+    content_.load(path.toLocalFile());
+    resizeContainer();
     update();
+}
+
+void ImageItem::resizeContainer()
+{
+    setProperty("width", content_.width());
+    setProperty("height", content_.height());
 }

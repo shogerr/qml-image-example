@@ -9,10 +9,10 @@ import '.' as Ui
 
 ApplicationWindow {
     id: window
-    width: 640
-    height: 480
+    width: 1024
+    height: 1080
     visible: true
-//    property alias canvasFrame: canvasFrame
+    //property alias imageItem: imageItem
 
 /*
     Loader {
@@ -54,10 +54,13 @@ ApplicationWindow {
 
     ImageItem {
         id: imageItem
-        width: 1024
-        height: 1024
+        width: parent.width
+        height: parent.height
         Text {
             text: "ImageItem"
+        }
+        onImageChanged: {
+            print("Loaded new image.")
         }
         Component.onCompleted: {
             print("ImageItem is complete.")
@@ -74,8 +77,7 @@ ApplicationWindow {
         id: fileOpen
         nameFilters: ["All Files (*)"]
         onAccepted: {
-            print(imagePane)
-            imagePane.openImage(fileOpen.file)
+            imageItem.openImage(fileOpen.file)
             print("File is: " + fileOpen.files)
         }
     }

@@ -1,7 +1,7 @@
+#include <QApplication>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <QGuiApplication>
-#include <QApplication>
 
 #include <memory>
 
