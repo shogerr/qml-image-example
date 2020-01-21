@@ -23,7 +23,7 @@ void ImageItem::openImage(const QString path)
 {
     qDebug() << "Current dir is:" << QDir::currentPath();
     qDebug() << "Opening path: " << path;
-    content_ = QImage("../image-editor/assets/PM5544_with_non-PAL_signals.png");
+    content_ = QImage("./assets/PM5544_with_non-PAL_signals.png");
     int x = content_.width();
     qDebug() << x;
     update();

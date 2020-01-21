@@ -19,13 +19,14 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-find_package(OpenCV CONFIG REQUIRED)
+#find_package(OpenCV CONFIG REQUIRED)
 find_package(Qt5 COMPONENTS Core Widgets Quick REQUIRED)
 
 set(SOURCE
     src/main.cpp
     src/image_item.cpp
     src/workspace.cpp
+    src/renderer.cpp
     )
 
 set(FORMS
