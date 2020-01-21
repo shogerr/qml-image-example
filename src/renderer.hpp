@@ -14,11 +14,14 @@ public:
     Renderer() : program_(nullptr) {}
     ~Renderer();
     void setViewportSize(const QSize &size) { viewport_size_ = size; }
-    void setWindow(QQuickWindow *window) { window_ = std::move(window);}
+    void setWindow(QQuickWindow *window) { window_.reset(window); }
+
+    public slots:
+        void init();
 
 private:
-    QSize viewport_size_;
     std::unique_ptr<QOpenGLShaderProgram> program_;
+    QSize viewport_size_;
     std::unique_ptr<QQuickWindow> window_;
 };
 

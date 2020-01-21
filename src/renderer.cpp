@@ -18,10 +18,10 @@ const char *fs =
     "   gl_FragColor = vec4(coords * .5 + .5, i, i);"
     "}";
 
-void Renderer::paint()
+void Renderer::init()
 {
     if (!program_.get()) {
-        initiliazeOpenGLFunction();
+        initializeOpenGLFunctions();
 
         program_ = std::make_unique<QOpenGLShaderProgram>();
 
