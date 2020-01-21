@@ -18,6 +18,7 @@ public:
 
     public slots:
         void init();
+        void paint();
 
 private:
     std::unique_ptr<QOpenGLShaderProgram> program_;
